@@ -19,7 +19,6 @@ function img = crop_img(A, center, crop_size)
     
     c = round(x_pos - offset + 1);
     d = round(x_pos + offset);
-    
     img = A(a:b, c:d);
 
 end

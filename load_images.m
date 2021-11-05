@@ -36,13 +36,11 @@ end
 
 % %===========load train data================
 list_dir = dir("axial_t1wce_2_class\labels\train");
-% train_labels = zeros(length(list_dir) - 2, 2);
-% train = zeros(length(list_dir) - 2, crop_size^2);
+train_labels = zeros(length(list_dir) - 2, 2); 
+train = zeros(length(list_dir) - 2, crop_size^2);
 
 
-train_labels = zeros(32, 2);
-train = zeros(32, crop_size^2);
- for i = 3:32+3
+ for i = 3:length(list_dir)
      f_name = "axial_t1wce_2_class\labels\train\" + list_dir(i).name;
      fileID = fopen(f_name, "r");
      str = fscanf(fileID, "%c");
