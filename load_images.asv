@@ -34,12 +34,11 @@ train = zeros(length(list_dir), 256^2);
 for i = 3:length(list_dir)
     f_name = "axial_t1wce_2_class\images\train\" + list_dir(i).name;
     img = imread(f_name);
-    
+    img = reshape(img, 1, []);
     if length(img) ~= (256^2)
         img = imresize(img, 0.5);
     end
-    img = reshape(img, 1, []);
-    train(i, :) = img;
+    test(i, :) = img;
 end
 
 
