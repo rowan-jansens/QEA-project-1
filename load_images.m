@@ -18,6 +18,10 @@ end
 test = test(good_images, :);
 
 
+
+
+
+
 list_dir = dir("axial_t1wce_2_class\images\train");
 
 
@@ -35,4 +39,12 @@ for i = 3:length(list_dir)
 end
 
 train = train(good_images, :);
+
+
+
+
+
+
+
+
 end
