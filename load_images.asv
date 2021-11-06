@@ -1,7 +1,6 @@
 function [test, train, test_labels, train_labels] = load_images(crop_size)
 
 
-t_hold =10;
 %===========load test data================
 list_dir = dir("axial_t1wce_2_class\labels\test");
 test_labels = zeros(length(list_dir) - 2, 2);
@@ -28,9 +27,11 @@ for i = 3:length(list_dir)
     
     img = reshape(img, 1, []);
     
-    i1 = img < t_hold;
-    i2 = img >= t_hold;
-    img(i1) = mean(img(i2));
+%     for j=1:length(img)
+%         if img(j) < 3
+%             img(j) = 255;
+%         end
+%     end
     
         
     
@@ -71,11 +72,10 @@ train = zeros(length(list_dir) - 2, crop_size^2);
     
     
     
-    i1 = img < t_hold;
-    i2 = img >= t_hold;
-    img(i1) = mean(img(i2));
-
-
+     index= img(j) < 3
+             img(j) = 255;
+         end
+     end
     train(i-2, :) = img;
      
  end
