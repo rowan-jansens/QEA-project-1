@@ -1,4 +1,4 @@
-function [test, train, test_labels, train_labels] = load_images(crop_size)
+function [test, train, test_labels, train_labels, test_names, train_names] = load_images(crop_size)
 
 
 t_hold =10;
@@ -6,6 +6,8 @@ t_hold =10;
 list_dir = dir("axial_t1wce_2_class\labels\test");
 test_labels = zeros(length(list_dir) - 2, 2);
 test = zeros(length(list_dir) - 2, 256^2);
+test_names = {};
+train_names = {};
 for i = 3:length(list_dir)
     %label
     f_name = "axial_t1wce_2_class\labels\test\" + list_dir(i).name;
@@ -16,7 +18,8 @@ for i = 3:length(list_dir)
     
     %image
     extension = list_dir(i).name;
-    extension(end-2:end) = 'jpg';
+    extension(end-2:end) = "jpg";
+    test_names{end+1} = string(extension);
     
     
     f_name = "axial_t1wce_2_class\images\test\" + extension;
@@ -62,7 +65,8 @@ train = zeros(length(list_dir) - 2, crop_size^2);
      
     %image
     extension = list_dir(i).name;
-    extension(end-2:end) = 'jpg';
+    extension(end-2:end) = "jpg";
+    train_names{end+1} = string(extension);
 
     f_name = "axial_t1wce_2_class\images\train\" + extension;
     img = imread(f_name);
